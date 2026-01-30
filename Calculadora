@@ -1,0 +1,71 @@
+#include <iostream>
+#include <string.h>
+#include <limits>
+
+using namespace std;
+
+ void limparBuffer() {
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
+
+int main()
+{
+    int op;
+    double n1,n2;
+    char a;
+    
+    do{
+    cout << "\n===============================" << endl;
+        cout << "   Calculadora Simples" << endl;
+        cout << "===============================" << endl;
+    cout<<"Selecione uma operação:\n1. Adição\n2. Subtração\n3. Multiplicação\n4. Divisão\n5. Sair\nOpção: ";
+    cin>>op;
+    if(!(op>=1&&op<6)){
+        cout<<"Erro! Escolha uma opção valida"<<endl;
+        limparBuffer();
+        continue;
+    }else if(op==5){
+        break;
+    }
+    cout<<"Digite o primeiro numero: ";
+    while(!(cin>>n1)){
+        cout<<"Entrada invalida! Digite um numero.";
+        limparBuffer();
+    }
+    cout<<endl;
+    
+    cout<<"Digite o segundo numero: ";
+    while(!(cin>>n2)){
+         cout<<"Entrada invalida! Digite um numero.";
+        limparBuffer();
+    }
+    
+    switch(op){
+        case 1:
+        cout<<"Resultado: "<< n1<< " + "<<n2<<" = "<<n1+n2<<endl;
+        break;
+        case 2:
+        cout<<"Resultado: "<< n1<< " - "<<n2<<" = "<<n1-n2<<endl;
+        case 3:
+        cout<<"Resultado: "<< n1<< " * "<<n2<<" = "<<n1*n2<<endl;
+        case 4:
+        if(n2==0){
+            cout<<"Erro! Divisao por 0 invalida."<<endl;
+            limparBuffer();
+            continue;
+        }else{
+            cout<<"Resultado: "<< n1<< " / "<<n2<<" = "<<n1/n2<<endl;
+        }
+        break;
+    }
+    
+    cout<<"\nDeseja realizar outra operação? (s/n)";
+    cin>>a;
+    
+    }while(a=='s'||a=='S');
+    
+    cout << "\nObrigado por usar a calculadora! Ate a proxima." << endl;
+    
+    return 0;
+}
