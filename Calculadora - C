@@ -60,10 +60,16 @@ int main() {
         }
 
         printf("\nDeseja realizar outra operacao? (s/n): ");
-        limparBuffer(); // Limpa o rastro do Enter anterior
+        limparBuffer();
         scanf("%c", &a);
 
     } while (a == 's' || a == 'S');
+    
+    if(a=='n'||a=='N'){
+        printf("Ok!\n")
+    }else if(!(a=='n'||a=='N'||a=='s'||a=='S')){
+        printf("Erro! Escolha outra opção.\n")
+    }
 
     printf("\nObrigado por usar a calculadora! Ate a proxima.\n");
 
