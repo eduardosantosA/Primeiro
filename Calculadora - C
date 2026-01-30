@@ -1,0 +1,71 @@
+#include <stdio.h>
+
+void limparBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+int main() {
+    int op;
+    double n1, n2;
+    char a;
+
+    do {
+        printf("\n===============================\n");
+        printf("   Calculadora Simples (C)\n");
+        printf("===============================\n");
+        printf("Selecione uma operacao:\n1. Adicao\n2. Subtracao\n3. Multiplicacao\n4. Divisao\n5. Sair\nOpcao: ");
+        
+        if (scanf("%d", &op) != 1) {
+            printf("Erro! Entrada invalida.\n");
+            limparBuffer();
+            continue;
+        }
+
+        if (op == 5) break;
+        if (op < 1 || op > 5) {
+            printf("Erro! Escolha uma opcao valida.\n");
+            continue;
+        }
+
+        printf("Digite o primeiro numero: ");
+        while (scanf("%lf", &n1) != 1) {
+            printf("Entrada invalida! Digite um numero: ");
+            limparBuffer();
+        }
+
+        printf("Digite o segundo numero: ");
+        while (scanf("%lf", &n2) != 1) {
+            printf("Entrada invalida! Digite um numero: ");
+            limparBuffer();
+        }
+
+        switch (op) {
+            case 1:
+                printf("Resultado: %.2f + %.2f = %.2f\n", n1, n2, n1 + n2);
+                break;
+            case 2:
+                printf("Resultado: %.2f - %.2f = %.2f\n", n1, n2, n1 - n2);
+                break; // Faltava o break aqui
+            case 3:
+                printf("Resultado: %.2f * %.2f = %.2f\n", n1, n2, n1 * n2);
+                break; // Faltava o break aqui
+            case 4:
+                if (n2 == 0) {
+                    printf("Erro! Divisao por 0 invalida.\n");
+                } else {
+                    printf("Resultado: %.2f / %.2f = %.2f\n", n1, n2, n1 / n2);
+                }
+                break;
+        }
+
+        printf("\nDeseja realizar outra operacao? (s/n): ");
+        limparBuffer(); // Limpa o rastro do Enter anterior
+        scanf("%c", &a);
+
+    } while (a == 's' || a == 'S');
+
+    printf("\nObrigado por usar a calculadora! Ate a proxima.\n");
+
+    return 0;
+}
